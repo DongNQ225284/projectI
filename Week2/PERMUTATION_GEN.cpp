@@ -1,31 +1,45 @@
-//C++ 
+/*
+Problem: Permutation generation
+
+Description:
+Given an integer n, write a program to generate all permutations of 1, 2, ..., n in a lexicalgraphic order (elements of a permutation are separated by a SPACE character).
+Example
+Input 
+3
+Output
+1 2 3 
+1 3 2 
+2 1 3 
+2 3 1 
+3 1 2 
+3 2 1 
+*/
 #include <bits/stdc++.h> 
 using namespace std;
 
-int n;
-vector<int> a;
+class Solution {
+public:
+    int n;
+    vector<int> a;
 
-int loop(int n) {
-    int result = 1;
-    for (int i = 1; i <= n; i++) result *= i;
-    return result;
-}
+    void print(vector<int> arr) {
+        for (int v : arr) cout << v << " ";
+        cout << endl;
+    }
 
-void print() {
-    for (int i = 0; i < n; i++) cout << a[i] << " ";
-    cout << endl;
-}
+    void solve(int n) {
+        vector<int> a(n);
+        iota(a.begin(), a.end(), 1);
+        do {
+            print(a);
+        } while (next_permutation(a.begin(), a.end()));
+    }
+};
 
 int main() { 
+    int n;
     cin >> n;
-    for (int i = 1; i <= n; i++) {
-        a.push_back(i);
-    }
-    
-    for (int i = 1; i < loop(n); i++) {
-        print();
-        next_permutation(a.begin(), a.end());
-    }
-    print();
+    Solution solution;
+    solution.solve(n);
     return 0;
 }
