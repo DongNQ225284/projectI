@@ -72,10 +72,16 @@ public:
         blockMask[block_index(r, c)] &= ~bit;
     }
 
-    // Backtracking
+    void print(vector<vector<int>> board) {
+        for (auto arr : board) {
+            for (auto v : arr) cout << v << " ";
+            cout << endl;
+        }
+    }
     void Try(int r, int c) {
         if (r == SIZE) {
             count++;
+            //print(board);
             return;
         }
 
